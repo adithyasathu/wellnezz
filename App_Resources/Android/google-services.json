@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "717323060307",
+    "firebase_url": "https://wellnezz.firebaseio.com",
+    "project_id": "wellnezz",
+    "storage_bucket": "wellnezz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717323060307:android:d752402e024f2e60",
+        "android_client_info": {
+          "package_name": "org.nativescript.wellnezz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "717323060307-at2jb9ak4m98kqeapnfgon3lgtbuc4eg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVlY3t_SDVy5IqpW7LLmvrtOzPRM5FODw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717323060307-at2jb9ak4m98kqeapnfgon3lgtbuc4eg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "717323060307-3m4dgv5cevogc68k8klo1hgn5evovtup.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.nativescript.wellnezz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,65 @@
+// Custom common variables
+@import '../../../app-variables';
+
+// Drawer navigation custom styles
+$sidedrawer-list-item-offset-left: 15;
+$sidedrawer-list-icon-offset: 10;
+$sidedrawer-list-icon-size: 20;
+
+
+.sidedrawer {
+    &.sidedrawer-left {
+        .sidedrawer-header-image {
+            border-radius: 50;
+        }
+
+        .footnote {
+            color: rgba($ab-color, 0.5);
+        }
+    }
+
+    .sidedrawer-header {
+        background-color: $ab-background;
+        height: 180;
+
+        .sidedrawer-header-brand {
+            color: $ab-color;
+        }
+    }
+
+    .sidedrawer-content {
+        background-color: $side-drawer-background;
+        height: 100%;
+
+        ListView {
+            height: 100%;
+        }
+    }
+
+    .sidedrawer-list-item {
+        padding-left: $sidedrawer-list-item-offset-left;
+
+        Label {
+            vertical-align: center;
+            color: $blue-dark;
+        }
+
+        .fa {
+            width: $sidedrawer-list-icon-size;
+            margin-right: $sidedrawer-list-icon-offset;
+        }
+
+        &.selected {
+            background-color: $item-active-background;
+
+            Label {
+                color: $item-active-color;
+            }
+        }
+
+        &.sidedrawer-list-item-settings {
+            border-top-width: 1px;
+            border-top-color: $blue-50;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+<ActionBar class="action-bar">
+    <NavigationButton android.systemIcon="ic_menu_back" (tap)="onBackButtonTap()">
+    </NavigationButton>
+    <Label class="action-bar-title" [text]="promotion.name" horizontalAlignment="center"></Label>
+    <ActionItem ios.position="right" android.position="right" (tap)="onEditButtonTap()">
+        <Label text="Edit" class="action-item"></Label>
+    </ActionItem>
+</ActionBar>
+
+<<GridLayout class="page-content">
+    <ScrollView>
+        <StackLayout>
+            <Image [src]="promotion.imageUrl" stretch="aspectFill" height="200" class="m-b-15"></Image>
+
+            <StackLayout class="hr-light m-t-15 m-b-15"></StackLayout>
+
+            <Label [text]="promotion.description"  class="text p-b-10" textWrap="true"></Label>
+
+            <Button class="btn btn-primary btn-active" (tap)="onJoinTap()" id="button" text="Join Now!" ></Button>
+        </StackLayout>
+    </ScrollView>
+</GridLayout>

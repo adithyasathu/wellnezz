@@ -1,0 +1,79 @@
+<ActionBar  class="action-bar">
+    <!-- Menu Button for Android -->
+    <NavigationButton
+            *ngIf="isAndroid"
+            icon="res://ic_menu_white_24dp"
+            (tap)="onDrawerButtonTap()">
+    </NavigationButton>
+
+    <!-- Menu Button for iOS -->
+    <ActionItem
+            (tap)="onDrawerButtonTap()"
+            *ngIf="isIOS"
+            ios.position="left">
+        <Image src="res://ic_menu_white"></Image>
+    </ActionItem>
+
+    <Label class="action-bar-title" text="Promotions" horizontalAlignment="center"></Label>
+</ActionBar>
+
+
+<RadSideDrawer #drawer showOverNavigation="true" [drawerTransition]="sideDrawerTransition">
+    <!--
+    Use the tkDrawerContent directive to display the content of the app drawer on this page.
+    -->
+    <StackLayout tkDrawerContent>
+        <SideDrawer [selectedPage]="'Promotions'" [sideDrawer]="drawerComponent"></SideDrawer>
+    </StackLayout>
+
+    <!--
+    Use the tkMainContent directive to display the content of the page when you have an app drawer.
+    -->
+   <GridLayout class="page page-content" tkMainContent>
+       <RadListView [items]="promotions" (itemTap)="onPromotionItemTap($event)" class="list-group">
+        <!--
+        RadListView is a UI component part of the Progress NativeScript UI set of components.
+        Learn more about the RadListView UI component and how it can be customized in this documentation article:
+        https://docs.nativescript.org/angular/ui/professional-ui-components/ng-ListView/getting-started
+        This component is used to display the master list in the master-detail structure.
+        -->
+        <ng-template tkListItemTemplate let-promotion="item">
+            <StackLayout class="list-group-item">
+                <GridLayout rows="*, *, *" columns="*, *" class="list-group-item-content">
+                    <Label [text]="promotion.name" class="text-primary font-weight-bold"></Label>
+                    <Label col="1" horizontalAlignment="right" class="list-group-item-text m-r-5">
+                        <FormattedString>
+                            <Span text="&#xf118; " fontSize="20" fontWeight="800" style="color: #FFD700"  class="fa"></Span>
+                            <Span [text]="promotion.coins"></Span>
+                        </FormattedString>
+                    </Label>
+
+                    <StackLayout row="1" class="hr-light m-t-5 m-b-5" colSpan="2"></StackLayout>
+
+                    <Image row="2" [src]="promotion.imageUrl" stretch="aspectFill" height="120" class="m-r-20"></Image>
+
+                    <StackLayout row="2" col="1" verticalAlignment="center" class="list-group-item-text">
+                        <Label class="p-b-10" fontSize="18">
+                            <FormattedString ios:fontFamily="system">
+                                <Span text="&#xf273;   " class="fa text-primary"></Span>
+                                <Span [text]="promotion.expires"></Span>
+                            </FormattedString>
+                        </Label>
+                        <Label ios:fontFamily="system" class="p-b-10 text-primary"
+                               [text]="promotion.shortDescription" textWrap="true">
+                        </Label>
+                        <Label class="p-b-10">
+                            <FormattedString ios:fontFamily="system">
+                                <Span text="Available All Outlets ? " class="fa text-primary"></Span>
+                                <Span [text]="promotion.allStores ? 'Yes' : 'No'"></Span>
+                            </FormattedString>
+                        </Label>
+                    </StackLayout>
+                </GridLayout>
+            </StackLayout>
+        </ng-template>
+    </RadListView>
+
+       <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
+   </GridLayout>
+</RadSideDrawer>

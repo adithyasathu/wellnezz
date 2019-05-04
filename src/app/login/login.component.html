@@ -1,0 +1,25 @@
+<!--<StackLayout class="login-buttons">
+    <FacebookLoginButton (login)="onLogin($event)"></FacebookLoginButton>
+    <Button text="Continue with Facebook (custom)" (tap)="loginFB()"></Button>
+    <Button text="Get current access token" (tap)="getCurrentAccessToken()"></Button>
+
+    <FacebookShareButton [content] = "linkContent"></FacebookShareButton>
+    <FacebookSendButton [content] = "genericContent"></FacebookSendButton>
+    <Button (tap) = "onShareDialog()" text = "Open Share dialog (link)"
+            *ngIf = "canShowLinksShareDialog"></Button>
+    <Button (tap) = "onShareDialogPhotos()" text = "Open Share dialog (photos)"
+            *ngIf = "canShowPhotosShareDialog"></Button>
+    <Button (tap) = "onSendDialog()" text = "Open Message Share dialog"
+            *ngIf = "canShowLinksMessageDialog"></Button>
+    <Button (tap) = "onSendGenericDialog()" text = "Share Message Generic Template"
+            *ngIf = "canShowGenericMessageDialog"></Button>
+</StackLayout>-->
+<!--<StackLayout class="p-20">
+    <Button text="Login with Facebook" (tap)="login()"
+            class="btn-facebook" ></Button>
+</StackLayout>-->
+
+<AbsoluteLayout class="page">
+    <Button left="130" top="458" text="Login with Facebook" (tap)="login()"
+            class="btn-facebook"></Button>
+</AbsoluteLayout>
