@@ -1,0 +1,20 @@
+// Import app variables
+@import '../../_app-variables';
+
+.loading-button {
+    background-color: $wellness;
+    color: $white;
+    border-radius: 10;
+    width: 150;
+}
+
+.page-blur {
+    background-image: url("~/assets/images/background-blur.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0% 95%; /* instead set ypos to top to avoid scroll-up */
+}
+
+input:focus, textarea:focus {
+    border-color: $wellness;
+}

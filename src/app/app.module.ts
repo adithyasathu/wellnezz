@@ -9,15 +9,21 @@ import { LoginModule } from "~/app/login/login.module";
 import { PromotionsModule } from "~/app/promotions/promotions.module";
 import { LoadingIndicator } from "nativescript-loading-indicator";
 import { UserService } from "~/app/shared/user.service";
+import { LoadingModule } from "~/app/loading/loading.module";
+import { NativeScriptFormsModule } from "nativescript-angular";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     bootstrap: [
         AppComponent
     ],
     imports: [
+        LoadingModule,
         LoginModule,
         PromotionsModule,
+        ReactiveFormsModule,
         NativeScriptModule,
+        NativeScriptFormsModule,
         NativeScriptHttpClientModule,
         AppRoutingModule
     ],

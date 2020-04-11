@@ -1,14 +1,12 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-import { LoginComponent } from "./login.component";
-import { NativeScriptFormsModule } from "nativescript-angular";
-import { ReactiveFormsModule } from "@angular/forms";
+import { LoadingComponent } from "./loading.component";
 
 export const routerConfig = [
     {
         path: "",
-        component: LoginComponent
+        component: LoadingComponent
     }
 ];
 
@@ -16,11 +14,9 @@ export const routerConfig = [
     imports: [
         NativeScriptCommonModule,
         NativeScriptRouterModule,
-        NativeScriptFormsModule,
-        ReactiveFormsModule,
         NativeScriptRouterModule.forChild(routerConfig)
     ],
-    declarations: [ LoginComponent ],
+    declarations: [ LoadingComponent ],
     schemas: [ NO_ERRORS_SCHEMA ]
 })
-export class LoginModule { }
+export class LoadingModule { }

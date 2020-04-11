@@ -4,6 +4,8 @@
 dependencies {
   //implementation 'com.android.support:recyclerview-v7:+'
   compile 'com.android.support:multidex:1.0.3'
+  implementation 'com.google.android.gms:play-services-auth:16.0.1'
+  implementation 'com.google.android.gms:play-services-identity:16.0.0'
 }
 
 // If you want to add something to be applied before applying plugins' include.gradle files

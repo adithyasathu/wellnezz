@@ -1,6 +1,5 @@
-import * as firebase from "nativescript-plugin-firebase";
-
 import { Config } from "./config";
+import * as firebase from "nativescript-plugin-firebase/app";
 
 /* ***********************************************************
 * The {N} Firebase plugin initialization is explained in the plugin readme here:
@@ -14,8 +13,8 @@ import { Config } from "./config";
 *************************************************************/
 
 export function initFirebase() {
-    firebase.init({
-        persist: false,
+    firebase.initializeApp({
+        persist: true,
         storageBucket: Config.firebaseBucket
     }).then((instance) => console.log("firebase.init done"),
         (error) => console.log("firebase.init error: " + error));

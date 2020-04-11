@@ -8,9 +8,8 @@
       "version": "5.3.1"
     }
   },
-  "description": "NativeScript Application",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "repository": "<fill-your-repository-here>",
+  "description": "Wellnezz is a NativeScript Application integrated with Firebase as backend",
+  "license": "MIT",
   "scripts": {
     "lint": "tslint \"src/**/*.ts\"",
     "reinstall": "rm -rf node_modeules hooks platforms && npm install",
@@ -36,7 +35,7 @@
     "nativescript-ui-sidedrawer": "^6.0.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.3.0",
-    "tns-core-modules": "~5.3.0",
+    "tns-core-modules": "^5.3.2",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -48,7 +47,5 @@
     "nativescript-dev-typescript": "~0.9.0",
     "nativescript-dev-webpack": "~0.21.0",
     "tslint": "~5.11.0"
-  },
-  "gitHead": "803cec054c44c99eaa59cdc267993e6346f6cb3a",
-  "readme": "NativeScript Application"
+  }
 }

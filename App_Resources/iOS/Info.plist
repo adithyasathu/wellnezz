@@ -49,6 +49,20 @@
 	<false/>
 	<key>CFBundleURLTypes</key>
     <array>
+      <!-- GOOGLE START -->
+      <dict>
+          <key>CFBundleTypeRole</key>
+          <string>Editor</string>
+          <key>CFBundleURLSchemes</key>
+          <array>
+              <string>com.googleusercontent.apps.717323060307-3m4dgv5cevogc68k8klo1hgn5evovtup</string>
+              <!-- It shoud look like this: com.googleusercontent.apps.123123123-172648sdfsd76f8s7d6f8sd -->
+              <!-- Get it from your GoogleService-Info.plist -->
+              <!-- Read more - https://developers.google.com/identity/sign-in/ios/start-integrating -->
+          </array>
+      </dict>
+      <!-- GOOGLE END -->
+       <!-- FACEBOOK START -->
       <dict>
       <key>CFBundleURLSchemes</key>
       <array>
@@ -60,6 +74,7 @@
     <string>367394424118545</string>
     <key>FacebookDisplayName</key>
     <string>WellnezZ</string>
+      <!-- FACEBOOK END -->
     <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>fbapi</string>

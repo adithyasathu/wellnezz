@@ -8,15 +8,18 @@ const routes: Routes = [
         loadChildren: "~/app/promotions/promotions.module#PromotionsModule"
     },
     {
+        path: "loading",
+        loadChildren: "~/app/loading/loading.module#LoadingModule"
+    },
+    {
         path: "login",
         loadChildren: "~/app/login/login.module#LoginModule"
     },
     {
         path: "",
-        redirectTo: "login",
+        redirectTo: "loading",
         pathMatch: "full"
     }
-
 ];
 
 @NgModule({

@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular";
 import { ListViewEventData } from "nativescript-ui-listview";
-import { firebase } from "nativescript-plugin-firebase/firebase-common";
 import { UserService } from "~/app/shared/user.service";
 import { User } from "nativescript-plugin-firebase";
+import { Subscription } from "rxjs";
 
 @Component({
     selector: "SideDrawer",
@@ -12,7 +12,7 @@ import { User } from "nativescript-plugin-firebase";
     templateUrl: "./side-drawer.component.html",
     styleUrls: ["./side-drawer.component.css"]
 })
-export class SideDrawerComponent implements OnInit {
+export class SideDrawerComponent implements OnInit, OnDestroy {
 
     get navigationItems(): Array<any> {
         return this._navigationItems;
@@ -30,6 +30,7 @@ export class SideDrawerComponent implements OnInit {
     @Input() sideDrawer: RadSideDrawerComponent;
 
     _user: User;
+    _userSubscription: Subscription;
 
     private _navigationItems: Array<any>;
 
@@ -57,11 +58,15 @@ export class SideDrawerComponent implements OnInit {
             }
         ];
 
-        this.userService.currentUser.subscribe((user) => {
-            console.log("user", user);
-            this._user = user;
-        });
+        this._userSubscription = this.userService.currentUser.subscribe((user) => this._user = user);
 
+    }
+
+    ngOnDestroy() {
+        if (this._userSubscription) {
+            this._userSubscription.unsubscribe();
+            this._userSubscription = null;
+        }
     }
 
     // Use the "itemTap" event handler of the <ListView> component for handling list item taps.
@@ -72,7 +77,7 @@ export class SideDrawerComponent implements OnInit {
         const navigationItemRoute = navigationItemView.bindingContext.route;
 
         if (navigationItemView.bindingContext.name === "logout") {
-            this.onLogout();
+            this.userService.logout();
         } else if (this.isPageSelected(navigationItemView.bindingContext.title)) {
             this.sideDrawer.sideDrawer.closeDrawer();
         } else {
@@ -82,16 +87,6 @@ export class SideDrawerComponent implements OnInit {
                 }
             });
         }
-    }
-
-    onLogout(): void {
-        firebase.logout();
-        this.routerExtensions.navigate(["/login"], {
-            clearHistory: true,
-            transition: {
-                name: "fade"
-            }
-        });
     }
 
     // The "isPageSelected" function is bound to every navigation item on the <ListView>.

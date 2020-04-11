@@ -1,25 +1,61 @@
-<!--<StackLayout class="login-buttons">
-    <FacebookLoginButton (login)="onLogin($event)"></FacebookLoginButton>
-    <Button text="Continue with Facebook (custom)" (tap)="loginFB()"></Button>
-    <Button text="Get current access token" (tap)="getCurrentAccessToken()"></Button>
+<StackLayout class="page-blur">
 
-    <FacebookShareButton [content] = "linkContent"></FacebookShareButton>
-    <FacebookSendButton [content] = "genericContent"></FacebookSendButton>
-    <Button (tap) = "onShareDialog()" text = "Open Share dialog (link)"
-            *ngIf = "canShowLinksShareDialog"></Button>
-    <Button (tap) = "onShareDialogPhotos()" text = "Open Share dialog (photos)"
-            *ngIf = "canShowPhotosShareDialog"></Button>
-    <Button (tap) = "onSendDialog()" text = "Open Message Share dialog"
-            *ngIf = "canShowLinksMessageDialog"></Button>
-    <Button (tap) = "onSendGenericDialog()" text = "Share Message Generic Template"
-            *ngIf = "canShowGenericMessageDialog"></Button>
-</StackLayout>-->
-<!--<StackLayout class="p-20">
-    <Button text="Login with Facebook" (tap)="login()"
-            class="btn-facebook" ></Button>
-</StackLayout>-->
+    <Image src="~/assets/images/iconfinder_back.png" class="m-t-30" width="25" (tap)="onBackButtonTap()" horizontalAlignment="left"></Image>
+    <Label fontSize="32" class="font-brewski m-t-30" [text]="isRegisteredUser ? 'Login' : 'Register'" horizontalAlignment="center"></Label>
+    <StackLayout [formGroup]="signInForm" class="m-t-30" *ngIf="registeredUser" verticalAlignment="center">
+        <StackLayout class="form p-15" backgroundColor="#ffffff">
 
-<AbsoluteLayout class="page">
-    <Button left="130" top="458" text="Login with Facebook" (tap)="login()"
-            class="btn-facebook"></Button>
-</AbsoluteLayout>
+            <StackLayout class="p-10">
+                <TextField hint="Email" class="input input-border" id="email" formControlName="email" keyboardType="email"></TextField>
+                <Span class="m-y-10" *ngIf="signInForm.controls['email'].invalid && (signInForm.controls['email'].dirty || signInForm.controls['email'].touched)"
+                      class="text-danger">
+                    <Label *ngIf="signInForm.controls['email'].errors.required" text="Email is required"></Label>
+                    <Label *ngIf="signInForm.controls['email'].errors.email" text="Email is invalid"></Label>
+                </Span>
+            </StackLayout>
+            <StackLayout class="p-10">
+                <TextField secure="true" hint="Password" class="input input-border" formControlName="password"></TextField>
+            </StackLayout>
+            <Button class="btn btn-primary w-half" text="Login" (tap)="login('mail')"></Button>
+            <Label text="Not a member? Register here"  (tap)="registeredUser = !registeredUser" class="text-center"></Label>
+        </StackLayout>
+    </StackLayout>
+
+
+    <StackLayout [formGroup]="signUpForm" class="m-t-30" *ngIf="!registeredUser" verticalAlignment="center">
+        <StackLayout class="form p-15" backgroundColor="#ffffff">
+            <StackLayout class="p-10">
+                <TextField hint="Name" class="input input-border" formControlName="name"></TextField>
+            </StackLayout>
+            <StackLayout class="p-10">
+                <TextField hint="Email" class="input input-border" formControlName="email" keyboardType="email"></TextField>
+            </StackLayout>
+            <StackLayout class="p-10">
+                <TextField secure="true" hint="Password" class="input input-border" formControlName="password"></TextField>
+            </StackLayout>
+            <Button class="btn btn-primary w-half" text="Register" (tap)="register()"></Button>
+            <Label text="Already a member? Login here"  (tap)="registeredUser = !registeredUser" class="text-center"></Label>
+        </StackLayout>
+    </StackLayout>
+
+
+    <FlexboxLayout class="m-t-30" flexDirection="row" justifyContent="space-between">
+        <Label fontSize="32" class="font-brewski" text="Connect with "></Label>
+        <Image src="~/assets/images/iconfinder_fb.png"
+               width="30"
+               (tap)="login('facebook')">
+        </Image>
+        <Image src="~/assets/images/iconfinder_gplus.png"
+               width="30"
+               (tap)="login('google')">
+        </Image>
+        <Image src="~/assets/images/iconfinder_phone.png"
+               width="30"
+               (tap)="login('mobile')">
+         </Image>
+    </FlexboxLayout>
+
+
+</StackLayout>
+
+
